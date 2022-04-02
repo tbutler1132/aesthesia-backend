@@ -10,3 +10,15 @@ export const getWorlds = async (req, res) => {
         return res.status(400).json(error)
     }
 }
+
+export const getWorld = async (req, res) => {
+    const { id } = req.params.id
+    try {
+        const world = await World.findById(id)
+
+        return res.status(200).json(world)
+    } catch (error) {
+        
+        return res.status(400).json(error)
+    }
+}
