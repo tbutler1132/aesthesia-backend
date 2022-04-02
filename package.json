@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "nodemon index.js"
   },
   "keywords": [],
@@ -17,6 +18,8 @@
     "mongoose": "^6.2.9"
   },
   "devDependencies": {
+    "@faker-js/faker": "^6.1.1",
+    "jest": "^27.5.1",
     "nodemon": "^2.0.15"
   }
 }

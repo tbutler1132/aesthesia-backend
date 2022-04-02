@@ -1,13 +1,13 @@
-// import express from 'express'
-const express = require('express')
-// import mongoose from 'mongoose'
-const mongoose = require('mongoose')
-// import cors from 'cors'
-const cors = require('cors')
-// import dotenv from 'dotenv'
-require('dotenv').config()
-// import userRoutes from './routes/user.js'
-// import spotifyRoutes from './routes/spotify.js'
+import express from 'express'
+// const express = require('express')
+import mongoose from 'mongoose'
+// const mongoose = require('mongoose')
+import cors from 'cors'
+// const cors = require('cors')
+import dotenv from 'dotenv'
+dotenv.config()
+import userRoutes from './routes/user.js'
+
 
 const mdb = process.env.MONGO_DB_URI
 
@@ -17,6 +17,8 @@ const app = express();
 app.use(express.json({ limit: '30mb', extended: true }))
 app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
+
+app.use('/users', userRoutes)
 
 
 const CONNECTION_URL = `${mdb}`
