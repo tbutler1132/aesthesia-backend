@@ -7,6 +7,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 dotenv.config()
 import userRoutes from './routes/user.js'
+import worldRoutes from './routes/world.js'
 
 
 const mdb = process.env.MONGO_DB_URI
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 
 app.use('/users', userRoutes)
+app.use('/worlds', worldRoutes)
 
 
 const CONNECTION_URL = `${mdb}`
