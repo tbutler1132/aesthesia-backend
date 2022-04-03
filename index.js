@@ -8,6 +8,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 import userRoutes from './routes/user.js'
 import worldRoutes from './routes/world.js'
+import Song from './models/Song.js'
 
 
 const mdb = process.env.MONGO_DB_URI
