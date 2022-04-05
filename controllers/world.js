@@ -34,9 +34,31 @@ export const getSongs = async (req, res) => {
 
         await world.populate('songs')
 
-        console.log(world)
-
         return res.status(200).json(world.songs)
+    } catch (error) {
+        
+        return res.status(400).json(error)
+    }
+}
+
+export const getCurrentSong = async (req, res) => {
+
+    const { id } = req.params
+
+    //Find song that has attribute complete -> false
+
+    
+    try {
+
+        const world = await World.findById(id)
+    
+        await world.populate({
+            path: 'songs',
+            match: {complete: false }
+        })
+    
+        return res.status(200).json(world.songs)
+        
     } catch (error) {
         
         return res.status(400).json(error)
