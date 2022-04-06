@@ -59,6 +59,7 @@ const songs = [
                 bpm: 140,
                 scalce: "A minor",
                 version: 1,
+                current: true,
                 stems: [
                     {
                         track: "Drums",

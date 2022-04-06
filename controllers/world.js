@@ -57,7 +57,7 @@ export const getCurrentSong = async (req, res) => {
             match: {complete: false }
         })
     
-        return res.status(200).json(world.songs)
+        return res.status(200).json(world.songs[0])
         
     } catch (error) {
         

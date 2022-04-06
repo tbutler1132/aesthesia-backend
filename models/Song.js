@@ -15,7 +15,8 @@ const iterationSchema = new Schema(
         bpm: {type: Number},
         scale: {type: String},
         version: {type: Number},
-        stems: [stemSchema]
+        stems: [stemSchema],
+        current: {type: Boolean}
     },
     {
         timestamps: true
