@@ -1,8 +1,14 @@
 import mongoose from "mongoose"
 
-import { stemSchema } from './Song'
-
 const Schema = mongoose.Schema
+
+
+const stemSchema = new Schema(
+    {
+        track: {type: String},
+        file: {type: String},
+    }
+)
 
 
 const submissionSchema = new Schema(
@@ -10,10 +16,10 @@ const submissionSchema = new Schema(
         artist: {type: Schema.Types.ObjectId, ref: 'User'},
         bpm: {type: Number},
         scale: {type: String},
-        selected: {type: Boolean},
+        selected: {type: Boolean, default: false},
         stems: [stemSchema],
         description: {type: String},
-        votes: {type: Number}
+        votes: {type: Number, default: 0}
     },
     {
         timestamps: true

@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 
 const Schema = mongoose.Schema
 
-export const stemSchema = new Schema(
+const stemSchema = new Schema(
     {
         track: {type: String},
         file: {type: String},
@@ -12,6 +12,8 @@ export const stemSchema = new Schema(
 const iterationSchema = new Schema(
     {
         artist: {type: Schema.Types.ObjectId, ref: 'User'},
+        submissions: [{type: Schema.Types.ObjectId, ref: 'Submission'}],
+        description: {type: String},
         bpm: {type: Number},
         scale: {type: String},
         version: {type: Number},
@@ -29,6 +31,7 @@ const songSchema = new Schema(
         bpm: {type: Number},
         scale: {type: String},
         complete: {type: Boolean},
+        master: {type: String},
         iterations: [iterationSchema]
     }
 )

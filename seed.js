@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import User from './models/User.js'
 import World from './models/World.js'
 import Song from './models/Song.js'
+import Submission from './models/Submission.js'
 dotenv.config()
 
 const mdb = process.env.MONGO_DB_URI
@@ -45,15 +46,17 @@ const worlds = [
 const songs = [
     {
         title: "Awesome song 1",
-        bpm: 140,
-        scale: "A minor",
-        complete: true
+        bpm: 90,
+        scale: "B major",
+        complete: true,
+        master: "file534543"
     },
     {
         title: "Awesome song 2",
         bpm: 140,
         scale: "A minor",
         complete: false,
+        master: "file313646",
         iterations: [
             {
                 bpm: 140,
@@ -61,6 +64,10 @@ const songs = [
                 version: 1,
                 current: true,
                 stems: [
+                    {
+                        track: "Master",
+                        file: "masterfsdfs"
+                    },
                     {
                         track: "Drums",
                         file: "fdsfds"
@@ -83,6 +90,63 @@ const songs = [
     },
 ]
 
+const submissions = [
+    {
+        bpm: 140,
+        scale: "A minor",
+        stems: [
+            {
+                track: "Master",
+                file: "masterfsdfs"
+            },
+            {
+                track: "Drums",
+                file: "fdsfds"
+            },
+            {
+                track: "Vocals",
+                file: "wwsfds"
+            },
+            {
+                track: "Instruments",
+                file: "ggsfds"
+            },
+            {
+                track: "Bass",
+                file: "vvbsfds"
+            },
+        ],
+        description: "Updated the drums",
+    },
+    {
+        bpm: 170,
+        scale: "C minor",
+        stems: [
+            {
+                track: "Master",
+                file: "masterfsdfs"
+            },
+            {
+                track: "Drums",
+                file: "fdsfds"
+            },
+            {
+                track: "Vocals",
+                file: "wwsfds"
+            },
+            {
+                track: "Instruments",
+                file: "ggsfds"
+            },
+            {
+                track: "Bass",
+                file: "vvbsfds"
+            },
+        ],
+        description: "Updated the bass",
+    },
+]
+
 const seedDB = async () => {
     await User.deleteMany({})
     await User.insertMany(users)
@@ -90,6 +154,8 @@ const seedDB = async () => {
     await World.insertMany(worlds)
     await Song.deleteMany({})
     await Song.insertMany(songs)
+    await Submission.deleteMany({})
+    await Submission.insertMany(songs)
 }
 
 seedDB().then(() => {
