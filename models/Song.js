@@ -32,7 +32,8 @@ const songSchema = new Schema(
         scale: {type: String},
         complete: {type: Boolean},
         master: {type: String},
-        iterations: [iterationSchema]
+        iterations: [iterationSchema],
+        currentIteration: iterationSchema
     }
 )
 

@@ -8,7 +8,9 @@ import dotenv from 'dotenv'
 dotenv.config()
 import userRoutes from './routes/user.js'
 import worldRoutes from './routes/world.js'
+import submissionRoutes from './routes/submission.js'
 import Song from './models/Song.js'
+import Submission from './models/Submission.js'
 
 
 const mdb = process.env.MONGO_DB_URI
@@ -22,6 +24,7 @@ app.use(cors());
 
 app.use('/users', userRoutes)
 app.use('/worlds', worldRoutes)
+app.use('/submissions', submissionRoutes)
 
 
 const CONNECTION_URL = `${mdb}`

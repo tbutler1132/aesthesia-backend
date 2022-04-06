@@ -57,12 +57,41 @@ const songs = [
         scale: "A minor",
         complete: false,
         master: "file313646",
+        currentIteration: 
+            {
+                bpm: 80,
+                scalce: "F# minor",
+                version: 2,
+                current: true,
+                stems: [
+                    {
+                        track: "Master",
+                        file: "masterfsdfs"
+                    },
+                    {
+                        track: "Drums",
+                        file: "fdsfds"
+                    },
+                    {
+                        track: "Vocals",
+                        file: "wwsfds"
+                    },
+                    {
+                        track: "Instruments",
+                        file: "ggsfds"
+                    },
+                    {
+                        track: "Bass",
+                        file: "vvbsfds"
+                    },
+                ]
+            },
         iterations: [
             {
                 bpm: 140,
                 scalce: "A minor",
                 version: 1,
-                current: true,
+                current: false,
                 stems: [
                     {
                         track: "Master",

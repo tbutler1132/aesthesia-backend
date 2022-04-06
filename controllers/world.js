@@ -44,24 +44,24 @@ export const getSongs = async (req, res) => {
 export const getCurrentSong = async (req, res) => {
 
     const { id } = req.params
-
     
     try {
 
         const world = await World.findById(id)
-        await world.populate('currentSong')
+        await world.populate({
+            path: 'currentSong',
+            populate: {
+                path: 'currentIteration.submissions'
+            }
+        })
 
         const currentSong = world.currentSong
     
-        // await world.populate({
-        //     path: 'songs',
-        //     match: {complete: false }
-        // })
-    
         return res.status(200).json(currentSong)
-        
-    } catch (error) {
-        
+    } catch (error) {  
+        console.log(error)  
         return res.status(400).json(error)
     }
 }
+
+
