@@ -43,6 +43,21 @@ const worlds = [
     }
 ]
 
+const comments = [
+    {
+        content: "Needs better hi hats",
+        votes: 0
+    },
+    {
+        content: "Bass too loud",
+        votes: 0
+    },
+    {
+        content: "Amazing",
+        votes: 0
+    },
+]
+
 const songs = [
     {
         title: "Awesome song 1",
@@ -63,6 +78,7 @@ const songs = [
                 scalce: "F# minor",
                 version: 2,
                 current: true,
+                comments: comments,
                 stems: [
                     {
                         track: "Master",
@@ -184,7 +200,7 @@ const seedDB = async () => {
     await Song.deleteMany({})
     await Song.insertMany(songs)
     await Submission.deleteMany({})
-    await Submission.insertMany(songs)
+    await Submission.insertMany(submissions)
 }
 
 seedDB().then(() => {

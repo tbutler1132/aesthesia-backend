@@ -9,6 +9,17 @@ const stemSchema = new Schema(
     }
 )
 
+const commentSchema = new Schema(
+    {
+        content: String,
+        user: {type: Schema.Types.ObjectId, ref: 'User'},
+        votes: Number
+    },
+    {
+        timestamps: true
+    }
+)
+
 const iterationSchema = new Schema(
     {
         artist: {type: Schema.Types.ObjectId, ref: 'User'},
@@ -18,7 +29,8 @@ const iterationSchema = new Schema(
         scale: {type: String},
         version: {type: Number},
         stems: [stemSchema],
-        current: {type: Boolean}
+        current: {type: Boolean},
+        comments: [commentSchema]
     },
     {
         timestamps: true
