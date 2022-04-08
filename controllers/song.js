@@ -15,7 +15,7 @@ export const createIterationComment = async (req, res) => {
 
         await song.save()
 
-        res.status(200).json(song)
+        res.status(200).json(song.currentIteration.comments)
     } catch (error) {
         console.log(error)
         
