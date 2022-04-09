@@ -1,11 +1,14 @@
 import Song from "../models/Song.js"
 
+//! Fix error messages
+
 
 export const createIterationComment = async (req, res) => {
     
     const { id } = req.params 
 
     const comment = req.body
+
 
     try {
 
@@ -18,6 +21,6 @@ export const createIterationComment = async (req, res) => {
         res.status(200).json(song.currentIteration.comments)
     } catch (error) {
         console.log(error)
-        
+        res.status(500).json(error)
     }
 }
