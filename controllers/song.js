@@ -4,7 +4,6 @@ import Song from "../models/Song.js"
 
 
 export const createIterationComment = async (req, res) => {
-    
     const { id } = req.params 
 
     const comment = req.body
@@ -39,5 +38,41 @@ export const addSubmission = async (req, res) => {
     } catch (error) {
 
         res.status(500).json(error)
+    }
+}
+
+
+//Really take a look at this
+export const updateCurrentIteration = async (req, res) => {
+    const { id } = req.params
+    const iteration = req.body
+
+    //Is there a more elegant solution?
+    //Format submission to match iteration
+    delete iteration._id 
+    delete iteration.__v 
+    delete iteration.votes
+    delete iteration.createdAt
+    delete iteration.updatedAt
+    delete iteration.selected 
+    iteration.submissions = []
+    // iteration.version++
+
+    try {
+        const song = await Song.findById(id)
+
+        //Format current iteration to be old iteration
+        const oldIteration = {...song.currentIteration._doc}
+        delete oldIteration._id
+        delete oldIteration.updatedAt
+        song.iterations.push(oldIteration)
+        await song.save()
+
+        iteration.version = oldIteration.version++
+        song.currentIteration = iteration
+        await song.save()
+
+    } catch (error) {
+        
     }
 }
