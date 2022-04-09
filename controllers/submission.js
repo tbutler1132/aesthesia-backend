@@ -23,25 +23,17 @@ export const createSubmission = async (req, res) => {
     const { songId } = req.query
 
     const { 
-        bass,
         bpm,
         description,
-        drums,
-        instruments,
-        master,
         scale,
-        vocals
+        stems
      } = req.body
 
     const submission = new Submission({
-        bass,
         bpm,
         description,
-        drums,
-        instruments,
-        master,
         scale,
-        vocals
+        stems
     })
     
     try {
