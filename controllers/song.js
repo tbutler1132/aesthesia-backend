@@ -2,6 +2,18 @@ import Song from "../models/Song.js"
 
 //! Fix error messages
 
+export const updateSong = async (req, res) => {
+
+    
+
+    const updatedSong = req.body
+
+    try {
+        const song = await Song.findByIdAndUpdate(id, updatedSong)
+    } catch (error) {
+        
+    }
+}
 
 export const createIterationComment = async (req, res) => {
     const { id } = req.params 
@@ -58,6 +70,7 @@ export const updateCurrentIteration = async (req, res) => {
     iteration.submissions = []
     // iteration.version++
 
+
     try {
         const song = await Song.findById(id)
 
@@ -73,6 +86,23 @@ export const updateCurrentIteration = async (req, res) => {
         await song.save()
 
     } catch (error) {
+        console.log(error)
         
+    }
+}
+
+export const voteCurrentIteration = async (req, res) => {
+    const { id } = req.params 
+
+    try {
+        const song = await Song.findById(id)
+        song.currentIteration.completeVotes++
+        await song.save()
+
+        res.status(200).json(song.currentIteration)
+    } catch (error) {
+        
+        console.log(error)
+        res.status(500).json('error')
     }
 }

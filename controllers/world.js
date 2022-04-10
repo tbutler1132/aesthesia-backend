@@ -1,4 +1,5 @@
 import World from '../models/World.js'
+import Song from '../models/Song.js'
 
 export const getWorlds = async (req, res) => {
     try {
@@ -22,6 +23,48 @@ export const getWorld = async (req, res) => {
     } catch (error) {
         
         return res.status(400).json(error)
+    }
+}
+
+// export const updateWorld = async (req, res) => {
+//     const { id } = req.params 
+
+//     try {
+        
+//     } catch (error) {
+        
+//     }
+// }
+
+export const completeCurrentSong = async (req, res) => {
+    const { id } = req.params 
+
+    const currentIteration = {
+        submissions: [],
+        description: "Default",
+        completeVotes: 0,
+        bpm: 0,
+        stems: [],
+        scale: "",
+        version: 0
+    }
+
+    try {
+        const world = await World.findById(id)
+        world.songs.push(world.currentSong)
+
+        const newSong = new Song({
+            currentIteration
+        })
+
+        await newSong.save()
+
+        world.currentSong = newSong._id
+
+        world.save()
+
+    } catch (error) {
+        
     }
 }
 

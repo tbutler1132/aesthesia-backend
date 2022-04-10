@@ -23,14 +23,15 @@ const commentSchema = new Schema(
 const iterationSchema = new Schema(
     {
         artist: {type: Schema.Types.ObjectId, ref: 'User'},
-        submissions: [{type: Schema.Types.ObjectId, ref: 'Submission'}],
+        submissions: [{type: Schema.Types.ObjectId, ref: 'Submission', default: []}],
         description: {type: String},
         bpm: {type: Number},
         scale: {type: String},
         version: {type: Number},
         stems: [stemSchema],
-        current: {type: Boolean},
-        comments: [commentSchema]
+        current: {type: Boolean, default: true},
+        comments: [commentSchema],
+        completeVotes: {type: Number, default: 0}
     },
     {
         timestamps: true
@@ -40,11 +41,11 @@ const iterationSchema = new Schema(
 
 const songSchema = new Schema(
     {
-        title: {type: String},
-        bpm: {type: Number},
-        scale: {type: String},
+        title: {type: String, default: ""},
+        bpm: {type: Number, default: 0},
+        scale: {type: String, default: ""},
         complete: {type: Boolean},
-        master: {type: String},
+        master: {type: String, default: ""},
         iterations: [iterationSchema],
         currentIteration: iterationSchema
     }
