@@ -40,7 +40,19 @@ const worlds = [
         referenceSongs: ["Gold Digger", "Stronger", "Runaway"],
         referenceImages: ["Blue", "Green"],
         tags: ["Dark", "Cool"]
-    }
+    },
+    {
+        description: "World 2",
+        referenceSongs: ["Gold Digger", "Stronger", "Runaway"],
+        referenceImages: ["Blue", "Green"],
+        tags: ["Light", "Nerdy"]
+    },
+    {
+        description: "World 3",
+        referenceSongs: ["Gold Digger", "Stronger", "Runaway"],
+        referenceImages: ["Blue", "Green"],
+        tags: ["Grey", "Aloof"]
+    },
 ]
 
 const comments = [
