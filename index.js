@@ -10,6 +10,7 @@ import userRoutes from './routes/user.js'
 import worldRoutes from './routes/world.js'
 import submissionRoutes from './routes/submission.js'
 import songRoutes from './routes/song.js'
+import spotifyRoutes from './routes/spotify.js'
 import Song from './models/Song.js'
 import Submission from './models/Submission.js'
 
@@ -27,6 +28,7 @@ app.use('/users', userRoutes)
 app.use('/worlds', worldRoutes)
 app.use('/submissions', submissionRoutes)
 app.use('/songs', songRoutes)
+app.use('/spotify', spotifyRoutes)
 
 
 const CONNECTION_URL = `${mdb}`
