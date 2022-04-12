@@ -4,7 +4,7 @@ import {
     createIterationComment,
     addSubmission,
     updateCurrentIteration,
-    voteCurrentIteration
+    voteCurrentIteration,
 } 
 from "../controllers/song.js";
 

@@ -26,15 +26,45 @@ export const getWorld = async (req, res) => {
     }
 }
 
-// export const updateWorld = async (req, res) => {
-//     const { id } = req.params 
+export const createWorld = async (req, res) => {
+    const { referenceTracks, description, tags } = req.body 
 
-//     try {
-        
-//     } catch (error) {
-        
-//     }
-// }
+    const currentIteration = {
+        submissions: [],
+        description: "Default",
+        completeVotes: 0,
+        bpm: 0,
+        stems: [],
+        scale: "",
+        version: 0
+    }
+
+    const newSong = new Song({
+        currentIteration
+    })
+
+    const newWorld =  new World({
+        description,
+        referenceTracks,
+        tags,
+        songs: []
+    })
+
+    try {
+
+        const song = await newSong.save()
+        const world = await newWorld.save()
+        // console.log(song)
+        // newWorld.currentSong = song._id
+        await world.update({
+            currentSong: song._id
+        })
+
+        res.status(200).json("Success")
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 export const completeCurrentSong = async (req, res) => {
     const { id } = req.params 
@@ -63,8 +93,10 @@ export const completeCurrentSong = async (req, res) => {
 
         world.save()
 
+        res.status(200).json(world)
     } catch (error) {
         
+        res.status(500).json(error)
     }
 }
 

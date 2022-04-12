@@ -85,9 +85,11 @@ export const updateCurrentIteration = async (req, res) => {
         song.currentIteration = iteration
         await song.save()
 
+        res.status(200).json(song)
     } catch (error) {
         console.log(error)
         
+        res.status(500).json("Whoops")
     }
 }
 

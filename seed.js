@@ -41,18 +41,18 @@ const worlds = [
         referenceImages: ["Blue", "Green"],
         tags: ["Dark", "Cool"]
     },
-    {
-        description: "World 2",
-        referenceSongs: ["Gold Digger", "Stronger", "Runaway"],
-        referenceImages: ["Blue", "Green"],
-        tags: ["Light", "Nerdy"]
-    },
-    {
-        description: "World 3",
-        referenceSongs: ["Gold Digger", "Stronger", "Runaway"],
-        referenceImages: ["Blue", "Green"],
-        tags: ["Grey", "Aloof"]
-    },
+    // {
+    //     description: "World 2",
+    //     referenceSongs: ["Gold Digger", "Stronger", "Runaway"],
+    //     referenceImages: ["Blue", "Green"],
+    //     tags: ["Light", "Nerdy"]
+    // },
+    // {
+    //     description: "World 3",
+    //     referenceSongs: ["Gold Digger", "Stronger", "Runaway"],
+    //     referenceImages: ["Blue", "Green"],
+    //     tags: ["Grey", "Aloof"]
+    // },
 ]
 
 const comments = [
@@ -211,8 +211,13 @@ const seedDB = async () => {
     await World.insertMany(worlds)
     await Song.deleteMany({})
     await Song.insertMany(songs)
+
+    
     await Submission.deleteMany({})
     await Submission.insertMany(submissions)
+
+    const song = await Song.findOne({ title: "Awesome song 2" })
+    const world = await World.findOneAndUpdate({ description: "Ipsolum" }, { currentSong: song })
 }
 
 seedDB().then(() => {
