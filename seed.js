@@ -37,22 +37,22 @@ const users = [
 const worlds = [
     {
         description: "Ipsolum",
-        referenceSongs: ["Gold Digger", "Stronger", "Runaway"],
-        referenceImages: ["Blue", "Green"],
+        referenceSongs: ["https://open.spotify.com/track/4EWCNWgDS8707fNSZ1oaA5?si=0b4c066f963e496b", "https://open.spotify.com/track/4EWCNWgDS8707fNSZ1oaA5?si=0b4c066f963e496b", "https://open.spotify.com/track/4EWCNWgDS8707fNSZ1oaA5?si=0b4c066f963e496b"],
+        referenceImages: ["https://images.unsplash.com/photo-1615012553971-f7251c225e01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cmVkfGVufDB8fDB8fA%3D%3D&w=1000&q=80", "https://images.unsplash.com/photo-1615012553971-f7251c225e01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cmVkfGVufDB8fDB8fA%3D%3D&w=1000&q=80"],
         tags: ["Dark", "Cool"]
     },
-    // {
-    //     description: "World 2",
-    //     referenceSongs: ["Gold Digger", "Stronger", "Runaway"],
-    //     referenceImages: ["Blue", "Green"],
-    //     tags: ["Light", "Nerdy"]
-    // },
-    // {
-    //     description: "World 3",
-    //     referenceSongs: ["Gold Digger", "Stronger", "Runaway"],
-    //     referenceImages: ["Blue", "Green"],
-    //     tags: ["Grey", "Aloof"]
-    // },
+    {
+        description: "World 2",
+        referenceSongs: ["https://open.spotify.com/track/4EWCNWgDS8707fNSZ1oaA5?si=0b4c066f963e496b", "https://open.spotify.com/track/4EWCNWgDS8707fNSZ1oaA5?si=0b4c066f963e496b", "https://open.spotify.com/track/4EWCNWgDS8707fNSZ1oaA5?si=0b4c066f963e496b"],
+        referenceImages: ["https://images.unsplash.com/photo-1615012553971-f7251c225e01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cmVkfGVufDB8fDB8fA%3D%3D&w=1000&q=80", "https://images.unsplash.com/photo-1615012553971-f7251c225e01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cmVkfGVufDB8fDB8fA%3D%3D&w=1000&q=80"],
+        tags: ["Light", "Nerdy"]
+    },
+    {
+        description: "World 3",
+        referenceSongs: ["https://open.spotify.com/track/4EWCNWgDS8707fNSZ1oaA5?si=0b4c066f963e496b", "https://open.spotify.com/track/4EWCNWgDS8707fNSZ1oaA5?si=0b4c066f963e496b", "https://open.spotify.com/track/4EWCNWgDS8707fNSZ1oaA5?si=0b4c066f963e496b"],
+        referenceImages: ["https://images.unsplash.com/photo-1615012553971-f7251c225e01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cmVkfGVufDB8fDB8fA%3D%3D&w=1000&q=80", "https://images.unsplash.com/photo-1615012553971-f7251c225e01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cmVkfGVufDB8fDB8fA%3D%3D&w=1000&q=80"],
+        tags: ["Grey", "Aloof"]
+    },
 ]
 
 const comments = [
