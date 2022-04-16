@@ -4,8 +4,6 @@ import Song from "../models/Song.js"
 
 export const updateSong = async (req, res) => {
 
-    
-
     const updatedSong = req.body
 
     try {
@@ -31,6 +29,7 @@ export const createIterationComment = async (req, res) => {
 
         res.status(200).json(song.currentIteration.comments)
     } catch (error) {
+        
         console.log(error)
         res.status(500).json(error)
     }

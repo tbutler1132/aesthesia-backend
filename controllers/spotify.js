@@ -1,4 +1,3 @@
-import axios from "axios"
 import dotenv from 'dotenv'
 import SpotifyWebApi from 'spotify-web-api-node'
 dotenv.config()
