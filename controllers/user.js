@@ -4,7 +4,7 @@ export const getUsers = async (req, res) => {
     try {
         const users = await User.find()
 
-        console.log(users)
+        
     } catch (error) {
         
     }
