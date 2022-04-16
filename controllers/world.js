@@ -8,7 +8,7 @@ export const getWorlds = async (req, res) => {
         return res.status(200).json(worlds)
     } catch (error) {
         
-        return res.status(400).json(error)
+        return res.status(500).json(error)
     }
 }
 
@@ -22,13 +22,14 @@ export const getWorld = async (req, res) => {
         return res.status(200).json(world)
     } catch (error) {
         
-        return res.status(400).json(error)
+        return res.status(500).json(error)
     }
 }
 
 export const createWorld = async (req, res) => {
     const { referenceTracks, description, tags } = req.body 
 
+    //Move out of function because I use it twice
     const currentIteration = {
         submissions: [],
         description: "Default",
@@ -54,8 +55,6 @@ export const createWorld = async (req, res) => {
 
         const song = await newSong.save()
         const world = await newWorld.save()
-        // console.log(song)
-        // newWorld.currentSong = song._id
         await world.update({
             currentSong: song._id
         })
@@ -63,6 +62,8 @@ export const createWorld = async (req, res) => {
         res.status(200).json("Success")
     } catch (error) {
         console.log(error)
+
+        return res.status(500).json(error)
     }
 }
 
@@ -112,7 +113,7 @@ export const getSongs = async (req, res) => {
         return res.status(200).json(world.songs)
     } catch (error) {
         
-        return res.status(400).json(error)
+        return res.status(500).json(error)
     }
 }
 
@@ -135,7 +136,8 @@ export const getCurrentSong = async (req, res) => {
         return res.status(200).json(currentSong)
     } catch (error) {  
         console.log(error)  
-        return res.status(400).json(error)
+        
+        return res.status(500).json(error)
     }
 }
 

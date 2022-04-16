@@ -10,6 +10,7 @@ export const updateSong = async (req, res) => {
         const song = await Song.findByIdAndUpdate(id, updatedSong)
     } catch (error) {
         
+        res.status(500).json(error)
     }
 }
 

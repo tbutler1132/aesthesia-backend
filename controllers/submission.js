@@ -14,7 +14,7 @@ export const updateSubmission = async (req, res) => {
         res.status(200).json(submission)
     } catch (error) {
         
-        res.status(400).json(error)
+        res.status(500).json(error)
     }
 }
 
@@ -51,7 +51,6 @@ export const createSubmission = async (req, res) => {
     } catch (error) {
         console.log(error)
 
-        res.status(500).json('Error', error)
-        
+        res.status(500).json('Error', error)    
     }
 }
