@@ -1,5 +1,6 @@
 import Submission from "../models/Submission.js"
 import Song from "../models/Song.js"
+import cloudinary from '../utils/cloudinary.js'
 
 
 export const updateSubmission = async (req, res) => {
@@ -21,36 +22,50 @@ export const updateSubmission = async (req, res) => {
 export const createSubmission = async (req, res) => {
 
     const { songId } = req.query
+    const { files } = req.body
 
-    const { 
-        bpm,
-        description,
-        scale,
-        stems
-     } = req.body
-
-    const submission = new Submission({
-        bpm,
-        description,
-        scale,
-        stems
-    })
-    
     try {
-
-        const newSubmission = await submission.save()
-
-        const song = await Song.findById(songId)
-
-        song.currentIteration.submissions.push(newSubmission._id)
-
-        await song.save()
-
-        res.status(200).json(submission)
-        
+        const uploadedResponse = await cloudinary.uploader.upload(files, "dev_setups", {
+            resource_type: "video"
+        })
+        const { secure_url } = uploadedResponse
     } catch (error) {
-        console.log(error)
+        
 
-        res.status(500).json('Error', error)    
     }
+
+
+
+
+    // const { 
+    //     bpm,
+    //     description,
+    //     scale,
+    //     stems
+    //  } = req.body
+
+    // const submission = new Submission({
+    //     bpm,
+    //     description,
+    //     scale,
+    //     stems
+    // })
+    
+    // try {
+
+    //     const newSubmission = await submission.save()
+
+    //     const song = await Song.findById(songId)
+
+    //     song.currentIteration.submissions.push(newSubmission._id)
+
+    //     await song.save()
+
+    //     res.status(200).json(submission)
+        
+    // } catch (error) {
+    //     console.log(error)
+
+    //     res.status(500).json('Error', error)    
+    // }
 }
