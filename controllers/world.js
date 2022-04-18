@@ -27,7 +27,7 @@ export const getWorld = async (req, res) => {
 }
 
 export const createWorld = async (req, res) => {
-    const { referenceTracks, description, tags } = req.body 
+    const { referenceTracks, referenceImages, description, tags } = req.body 
 
     //Move out of function because I use it twice
     const currentIteration = {
@@ -46,7 +46,8 @@ export const createWorld = async (req, res) => {
 
     const newWorld =  new World({
         description,
-        referenceTracks,
+        referenceSongs: referenceTracks,
+        referenceImages,
         tags,
         songs: []
     })
