@@ -211,6 +211,7 @@ const seedDB = async () => {
     await User.insertMany(users)
     await World.deleteMany({})
     await World.insertMany(worlds)
+
     await Song.deleteMany({})
     await Song.insertMany(songs)
 
