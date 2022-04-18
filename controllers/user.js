@@ -17,6 +17,8 @@ export const signin = async (req, res) => {
 
         const isPasswordCorrect = await bcrypt.compare(password, existingUser.password)
 
+        console.log(isPasswordCorrect)
+
         if(!isPasswordCorrect) return res.status(400).json('Invalid Credentials')
 
         const token = jwt.sign({email: existingUser.email, _id: existingUser._id}, jwtSecret, {expiresIn: "1h"})
@@ -53,9 +55,13 @@ export const getUsers = async (req, res) => {
     try {
         const users = await User.find()
 
-        
+        await User.populate(users, { path: 'world' })
+
+        res.status(200).json(users)
     } catch (error) {
-        
+        console.log(error)
+
+        res.status(500).json('Error')
     }
 }
 

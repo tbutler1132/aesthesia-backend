@@ -4,6 +4,7 @@ import User from './models/User.js'
 import World from './models/World.js'
 import Song from './models/Song.js'
 import Submission from './models/Submission.js'
+import bcrypt from 'bcrypt'
 dotenv.config()
 
 const mdb = process.env.MONGO_DB_URI
@@ -13,24 +14,40 @@ mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: tr
   .then(() => console.log('connection open'))
   .catch((error) => console.log(`${error} did not connect`));
 
+const hashPassword = async (password) => {
+    try {
+        const hashedPassword = await bcrypt.hash(password, 12)
+        return hashedPassword
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 const users = [
     {
         email: "tbutler1132@gmail.com",
-        artistName: "Swizzed",
+        artistName: "Tim Butler",
         fullName: "Tim Butler",
-        password: "123",
+        password: "",
     },
     {
-        email: "tbutler1132@gmail.com",
-        artistName: "Swizzed",
-        fullName: "Tim Butler",
-        password: "123",
+        email: "mikedean@gmail.com",
+        artistName: "Mike Dean",
+        fullName: "Mike Dean",
+        password: "",
     },
     {
-        email: "tbutler1132@gmail.com",
+        email: "tbutler14@gmail.com",
         artistName: "Swizzed",
-        fullName: "Tim Butler",
-        password: "123",
+        fullName: "Swizzed",
+        password: "",
+    },
+    {
+        email: "tbutler1@gmail.com",
+        artistName: "Yung Lean",
+        fullName: "Yung Lean",
+        password: "",
     },
 ]
 
@@ -55,20 +72,20 @@ const worlds = [
     },
 ]
 
-const comments = [
-    {
-        content: "Needs better hi hats",
-        votes: 0
-    },
-    {
-        content: "Bass too loud",
-        votes: 0
-    },
-    {
-        content: "Amazing",
-        votes: 0
-    },
-]
+// const comments = [
+//     {
+//         content: "Needs better hi hats",
+//         votes: 0
+//     },
+//     {
+//         content: "Bass too loud",
+//         votes: 0
+//     },
+//     {
+//         content: "Amazing",
+//         votes: 0
+//     },
+// ]
 
 const songs = [
     {
@@ -90,7 +107,8 @@ const songs = [
                 scalce: "F# minor",
                 version: 2,
                 current: true,
-                comments: comments,
+                // comments: comments,
+                comments: [],
                 description: "Made the bass slap",
                 stems: [
                     {
@@ -207,10 +225,19 @@ const submissions = [
 ]
 
 const seedDB = async () => {
+    for(let user of users){
+        user['password'] = await bcrypt.hash("123", 12)
+    }
     await User.deleteMany({})
     await User.insertMany(users)
     await World.deleteMany({})
     await World.insertMany(worlds)
+
+    const world2 = await World.findOne( {description: "World 1 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"} )
+    const world3 = await World.findOne( {description: "World 3 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"} )
+
+    await User.findOneAndUpdate({ artistName: "Yung Lean"}, {world: world2._id})
+    await User.findOneAndUpdate({ artistName: "Swizzed"}, {world: world3._id})
 
     await Song.deleteMany({})
     await Song.insertMany(songs)
@@ -220,7 +247,13 @@ const seedDB = async () => {
     await Submission.insertMany(submissions)
 
     const song = await Song.findOne({ title: "Awesome song 2" })
-    const world = await World.findOneAndUpdate({ description: "World 2 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?" }, { currentSong: song })
+    const world = await World.findOneAndUpdate(
+        { description: "World 2 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?" }, 
+        { currentSong: song }
+    )
+
+    await User.findOneAndUpdate({ artistName: "Mike Dean"}, {world: world._id})
+
 }
 
 seedDB().then(() => {

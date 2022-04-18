@@ -131,6 +131,12 @@ export const getCurrentSong = async (req, res) => {
                 path: 'currentIteration.submissions'
             }
         })
+        await world.populate({
+            path: 'currentSong',
+            populate: {
+                path: 'currentIteration.comments.user'
+            }
+        })
 
         const currentSong = world.currentSong
     
