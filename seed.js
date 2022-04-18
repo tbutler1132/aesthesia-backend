@@ -95,23 +95,23 @@ const songs = [
                 stems: [
                     {
                         track: "Master",
-                        file: "masterfsdfs"
+                        file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
                     },
                     {
                         track: "Drums",
-                        file: "fdsfds"
+                        file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
                     },
                     {
                         track: "Vocals",
-                        file: "wwsfds"
+                        file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
                     },
                     {
                         track: "Instruments",
-                        file: "ggsfds"
+                        file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
                     },
                     {
                         track: "Bass",
-                        file: "vvbsfds"
+                        file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
                     },
                 ]
             },
@@ -125,23 +125,23 @@ const songs = [
                 stems: [
                     {
                         track: "Master",
-                        file: "masterfsdfs"
+                        file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
                     },
                     {
                         track: "Drums",
-                        file: "fdsfds"
+                        file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
                     },
                     {
                         track: "Vocals",
-                        file: "wwsfds"
+                        file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
                     },
                     {
                         track: "Instruments",
-                        file: "ggsfds"
+                        file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
                     },
                     {
                         track: "Bass",
-                        file: "vvbsfds"
+                        file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
                     },
                 ]
             }
@@ -156,23 +156,23 @@ const submissions = [
         stems: [
             {
                 track: "Master",
-                file: "masterfsdfs"
+                file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
             },
             {
                 track: "Drums",
-                file: "fdsfds"
+                file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
             },
             {
                 track: "Vocals",
-                file: "wwsfds"
+                file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
             },
             {
                 track: "Instruments",
-                file: "ggsfds"
+                file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
             },
             {
                 track: "Bass",
-                file: "vvbsfds"
+                file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
             },
         ],
         description: "Updated the drums",
@@ -183,23 +183,23 @@ const submissions = [
         stems: [
             {
                 track: "Master",
-                file: "masterfsdfs"
+                file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
             },
             {
                 track: "Drums",
-                file: "fdsfds"
+                file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
             },
             {
                 track: "Vocals",
-                file: "wwsfds"
+                file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
             },
             {
                 track: "Instruments",
-                file: "ggsfds"
+                file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
             },
             {
                 track: "Bass",
-                file: "vvbsfds"
+                file: "https://res.cloudinary.com/dezy11bxa/video/upload/v1650292747/Liz_Phair_-_Why_Can_t_I__Official_Video_qt2ako.mp4"
             },
         ],
         description: "Updated the bass",
