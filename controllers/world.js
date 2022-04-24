@@ -127,15 +127,10 @@ export const getCurrentSong = async (req, res) => {
         const world = await World.findById(id)
         await world.populate({
             path: 'currentSong',
-            populate: {
-                path: 'currentIteration.submissions'
-            }
-        })
-        await world.populate({
-            path: 'currentSong',
-            populate: {
-                path: 'currentIteration.comments.user'
-            }
+            populate: [
+                {path: 'currentIteration.submissions'},
+                {path: 'currentIteration.comments.user'},
+            ]
         })
 
         const currentSong = world.currentSong
